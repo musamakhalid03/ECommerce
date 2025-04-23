@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart'; // Add this import
+import 'package:google_fonts/google_fonts.dart';
+import 'package:musamakhalid/helper/loading.dart';
 import 'package:musamakhalid/routes/app_pages.dart';
 import 'package:musamakhalid/splash/splash_binding.dart';
 import 'package:musamakhalid/splash/splash_view.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
+  EasyLoading.init();
+  await LoadingHelper.init();
 }
 
 class MyApp extends StatelessWidget {
@@ -26,12 +30,12 @@ class MyApp extends StatelessWidget {
           Theme.of(context).primaryTextTheme,
         ),
         appBarTheme: AppBarTheme(
-          titleTextStyle: GoogleFonts.montserrat(
-),
+          titleTextStyle: GoogleFonts.montserrat(),
         ),
       ),
       initialBinding: SplashBinding(),
       home: const SplashView(),
+      builder: EasyLoading.init(),
       getPages: AppPages.pages,
     );
   }

@@ -5,7 +5,7 @@ import 'package:musamakhalid/home/components/categorie_card.dart';
 import 'package:musamakhalid/home/components/free_shipping_banner.dart';
 import 'package:musamakhalid/home/components/product_card.dart';
 import 'package:musamakhalid/home/home_controller.dart';
-import 'package:musamakhalid/utils/components/app_bar/home_app_bar.dart';
+import 'package:musamakhalid/utils/gobal_components/app_bar/home_app_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

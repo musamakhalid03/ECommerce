@@ -12,22 +12,18 @@ class FreeShippingBanner extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       decoration: BoxDecoration(
         color: const Color(0xFF17A2B8),
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: SvgPicture.asset(
-              'assets/images/svg/rid_man.svg',
-              width: 32.0,
-              height: 32.0,
-            ),
-          ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Image.asset(
+                "assets/images/png/rider.png",
+              )),
           const Gap(16),
           Expanded(
             child: Column(
@@ -57,9 +53,8 @@ class FreeShippingBanner extends StatelessWidget {
               color: Colors.red,
               shape: BoxShape.circle,
             ),
-            child:  SvgPicture.asset(
+            child: SvgPicture.asset(
               'assets/images/svg/phone.svg',
-             
               width: 16.0,
               height: 16.0,
             ),
