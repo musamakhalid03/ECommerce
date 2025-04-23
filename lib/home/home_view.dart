@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:musamakhalid/home/components/categorie_card.dart';
+import 'package:musamakhalid/home/components/free_shipping_banner.dart';
 import 'package:musamakhalid/home/components/product_card.dart';
 import 'package:musamakhalid/home/home_controller.dart';
 import 'package:musamakhalid/utils/components/app_bar/home_app_bar.dart';
@@ -53,7 +54,7 @@ class HomeView extends StatelessWidget {
                 const Gap(11),
                 const Divider(
                   height: 1,
-                  color: Colors.amber,
+                  color: Colors.white,
                 ),
                 const Gap(10),
                 SizedBox(
@@ -114,6 +115,7 @@ class HomeView extends StatelessWidget {
                     return ProductCard(product: product);
                   },
                 ),
+                const FreeShippingBanner(),
               ],
             ),
           ),

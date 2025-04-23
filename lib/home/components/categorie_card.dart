@@ -29,20 +29,16 @@ class CategoryItem extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: -8,
-          right: -8,
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.red, width: 2),
-              borderRadius: BorderRadius.circular(
-                12.0,
-              ),
-            ),
+          top: -1,
+          right: -7,
+          child: CircleAvatar(
+            radius: 10,
+            backgroundColor: Colors.red,
             child: Text(
               badgeCount.toString(),
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 12,
+                fontSize: 10,
                 fontWeight: FontWeight.bold,
               ),
             ),
