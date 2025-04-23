@@ -13,7 +13,7 @@ class HomeAppBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         homeAppBarContainer(image: "assets/images/svg/dawer.svg"),
-        // SvgPicture.asset("assets/images/svg/Logo.svg"),
+        SvgPicture.asset("assets/images/svg/Logo.svg"),
         homeAppBarContainer(image: "assets/images/svg/serech.svg"),
       ],
     );

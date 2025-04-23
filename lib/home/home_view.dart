@@ -32,6 +32,7 @@ class HomeView extends StatelessWidget {
                   color: Color(0xFFD9E4E8),
                 ),
                 const Gap(11),
+              
                 SizedBox(
                   height: 40,
                   child: ListView.builder(
@@ -41,11 +42,13 @@ class HomeView extends StatelessWidget {
                     itemCount: controller.categories.length,
                     itemBuilder: (context, index) {
                       final category = controller.categories[index];
-                      return const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: CategoryItem(
-                          label: "wwwwwww",
-                          badgeCount: 20,
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Flexible(
+                          child: CategoryItem(
+                            label: category.name,
+                            badgeCount: 20,
+                          ),
                         ),
                       );
                     },
@@ -67,39 +70,61 @@ class HomeView extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Column(
                           children: [
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage(
-                                  controller.categories[index].image),
+                            Flexible(
+                              flex: 2,
+                              child: CircleAvatar(
+                                radius: 30,
+                                backgroundImage: AssetImage(
+                                    controller.categories[index].image),
+                              ),
                             ),
                             const Gap(8),
-                            Text(controller.categories[index].name),
+                            Flexible(
+                              flex: 1,
+                              child: Text(
+                                controller.categories[index].name,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(fontSize: 12),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
                           ],
                         ),
                       );
                     },
                   ),
                 ),
+                // Products Section Header
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        "Products",
-                        style:
-                            Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                      Flexible(
+                        flex: 3,
+                        child: Text(
+                          "Products",
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
+                        ),
                       ),
-                      Text(
-                        "(Beg)",
-                        style: TextStyle(color: Colors.red),
-                      )
+                      const SizedBox(width: 8),
+                      Flexible(
+                        flex: 1,
+                        child: Text(
+                          "(Beg)",
+                          style: const TextStyle(color: Colors.red),
+                        ),
+                      ),
                     ],
                   ),
                 ),
+              
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -112,9 +137,12 @@ class HomeView extends StatelessWidget {
                   itemCount: controller.products.length,
                   itemBuilder: (context, index) {
                     final product = controller.products[index];
-                    return ProductCard(product: product);
+                    return Flexible(
+                      child: ProductCard(product: product),
+                    );
                   },
                 ),
+              
                 const FreeShippingBanner(),
               ],
             ),

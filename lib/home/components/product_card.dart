@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:musamakhalid/home/home_controller.dart';
+import 'package:musamakhalid/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
