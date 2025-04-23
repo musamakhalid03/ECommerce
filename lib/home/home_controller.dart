@@ -20,17 +20,5 @@ class HomeController extends GetxController {
   ];
 }
 
-class Category {
-  final String name;
-  final String image;
 
-  Category({required this.name, required this.image});
-}
 
-class Product {
-  final String name;
-  final double price;
-  final String image;
-
-  Product({required this.name, required this.price, required this.image});
-}
