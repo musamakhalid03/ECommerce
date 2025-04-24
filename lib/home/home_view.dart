@@ -4,12 +4,18 @@ import 'package:get/get.dart';
 import 'package:musamakhalid/home/components/categorie_card.dart';
 import 'package:musamakhalid/home/components/free_shipping_banner.dart';
 import 'package:musamakhalid/home/components/product_card.dart';
+import 'package:musamakhalid/home/components/subcatorie.dart';
 import 'package:musamakhalid/home/home_controller.dart';
 import 'package:musamakhalid/utils/gobal_components/app_bar/home_app_bar.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {
@@ -32,23 +38,21 @@ class HomeView extends StatelessWidget {
                   color: Color(0xFFD9E4E8),
                 ),
                 const Gap(11),
-              
+
                 SizedBox(
                   height: 40,
                   child: ListView.builder(
                     shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: controller.categories.length,
                     itemBuilder: (context, index) {
                       final category = controller.categories[index];
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Flexible(
-                          child: CategoryItem(
-                            label: category.name,
-                            badgeCount: 20,
-                          ),
+                        child: CategoryItem(
+                          label: category.name,
+                          badgeCount: 20,
                         ),
                       );
                     },
@@ -57,74 +61,50 @@ class HomeView extends StatelessWidget {
                 const Gap(11),
                 const Divider(
                   height: 1,
-                  color: Colors.white,
+                  color: Color(0xFFD9E4E8),
                 ),
                 const Gap(10),
+
                 SizedBox(
                   height: 100,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: controller.categories.length,
                     itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Column(
-                          children: [
-                            Flexible(
-                              flex: 2,
-                              child: CircleAvatar(
-                                radius: 30,
-                                backgroundImage: AssetImage(
-                                    controller.categories[index].image),
-                              ),
-                            ),
-                            const Gap(8),
-                            Flexible(
-                              flex: 1,
-                              child: Text(
-                                controller.categories[index].name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(fontSize: 12),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
+                      return SubCategoryItem(
+                        picture: controller.categories[index].image,
+                        label: controller.categories[index].name,
+                        badgeCount: 20,
                       );
                     },
                   ),
                 ),
-                // Products Section Header
+
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 16.0, vertical: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Flexible(
-                        flex: 3,
-                        child: Text(
-                          "Products",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
+                      Text(
+                        "Products",
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
-                      const SizedBox(width: 8),
-                      Flexible(
-                        flex: 1,
-                        child: Text(
-                          "(Beg)",
-                          style: const TextStyle(color: Colors.red),
-                        ),
+                      const Gap(8),
+                      Text(
+                        "(Beg)",
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.red),
                       ),
                     ],
                   ),
                 ),
-              
+
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -137,12 +117,10 @@ class HomeView extends StatelessWidget {
                   itemCount: controller.products.length,
                   itemBuilder: (context, index) {
                     final product = controller.products[index];
-                    return Flexible(
-                      child: ProductCard(product: product),
-                    );
+                    return ProductCard(product: product);
                   },
                 ),
-              
+                // Free Shipping Banner
                 const FreeShippingBanner(),
               ],
             ),

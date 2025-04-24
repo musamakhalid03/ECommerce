@@ -21,7 +21,7 @@ class AppNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       if (networkImage == null || networkImage!.isEmpty) {
-      // Display asset image or fallback widget
+     
       return assetPath.isNotEmpty
           ? Image.asset(
               assetPath,
@@ -32,7 +32,7 @@ class AppNetworkImage extends StatelessWidget {
           : Icon(Icons.error, size: width);
     }
 
-    // CachedNetworkImage for valid networkImage URL
+    
     return CachedNetworkImage(
       imageUrl: networkImage!,
       height: height,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:musamakhalid/home/components/sold_out_badge.dart';
 import 'package:musamakhalid/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -91,22 +92,8 @@ class ProductCard extends StatelessWidget {
                     const Gap(8),
                   ],
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: const Text(
-                    "Sold Out",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                Gap(10),
+                SoldOutBadge()
               ],
             ),
           ),
