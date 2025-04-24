@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 
 class DioService {
+  static const String baseUrl = "https://tp-flutter-test.vercel.app/v1/";
   static final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: "https://tp-flutter-test.vercel.app/v1/",
+      baseUrl: baseUrl,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -12,9 +13,9 @@ class DioService {
     ),
   );
 
-  static Future<dynamic> get(String endpoint) async {
+  static Future<dynamic> get({String? endpoint,}) async {
     try {
-      final response = await _dio.get(endpoint);
+      final response = await _dio.get(endpoint!);
       return _handleResponse(response);
     } catch (e) {
       return _handleError(e);

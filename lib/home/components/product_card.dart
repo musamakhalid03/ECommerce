@@ -68,8 +68,8 @@ class ProductCard extends StatelessWidget {
                 Text(
                   product.name,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF89999F)),
                 ),
                 const Gap(4),
                 Row(
@@ -81,7 +81,7 @@ class ProductCard extends StatelessWidget {
                             decoration: TextDecoration.lineThrough,
                           ),
                     ),
-                    Gap(12),
+                    const Gap(12),
                     Text(
                       "\$${product.price}",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -92,8 +92,8 @@ class ProductCard extends StatelessWidget {
                     const Gap(8),
                   ],
                 ),
-                Gap(10),
-                SoldOutBadge()
+                const Gap(10),
+                const SoldOutBadge()
               ],
             ),
           ),
