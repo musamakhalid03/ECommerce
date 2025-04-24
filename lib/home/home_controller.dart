@@ -1,9 +1,15 @@
 import 'package:get/get.dart';
+import 'package:musamakhalid/api/product_api.dart';
 import 'package:musamakhalid/models/product_model.dart';
 
 class HomeController extends GetxController {
   static HomeController instance = Get.find();
-
+late Future<List<ProductData>> futureCategories;
+  @override
+  void onInit() {
+    super.onInit();
+    futureCategories = ProductApi.fetchCategoryData();
+  }
  
   final List<Category> categories = [
     Category(name: "Bags", image: "assets/images/png/Ellipse 8.png"),
